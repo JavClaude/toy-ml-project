@@ -22,5 +22,4 @@ jobs:
           pip install ".[tests]"
       - name: Run tests and coverage
         run: |
-          pytest --cov 
-          flake8 paa
+          pytest --cov
