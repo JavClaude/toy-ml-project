@@ -1,0 +1,6 @@
+dist
+.idea
+.pytest*
+.venv
+.coverage
+paa.egg-info
