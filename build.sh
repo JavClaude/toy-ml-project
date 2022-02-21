@@ -1,4 +1,4 @@
-pip uninstall paa -y
+pip install build
 python -m build .
 pip install dist/paa-0.1.0-py3-none-any.whl
 paa_train
