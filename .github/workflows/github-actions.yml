@@ -1,0 +1,26 @@
+name: paa-unit-tests
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+  pull_request:
+    branches:
+      - main
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Python 3
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+      - name: Install dependencies for tests
+        run: |
+          pip install --upgrade pip
+          pip install "[tests]"
+      - name: Run tests and coverage
+        run: |
+          coverage run -m pytest paa
+          coverage report -m -i
