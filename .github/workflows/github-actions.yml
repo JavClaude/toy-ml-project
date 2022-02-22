@@ -21,5 +21,8 @@ jobs:
           pip install --upgrade pip
           pip install ".[tests]"
       - name: Run tests and coverage
-        run: |
-          pytest --cov
+        run: pytest --cov
+      - name: Code Quality
+        run: | 
+        flake8 --ignore E501 paa
+        black paa
