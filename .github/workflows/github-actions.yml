@@ -1,4 +1,4 @@
-name: paa-unit-tests-and-quality-workflow
+name: paa-continuous-integration-workflow
 on:
   push:
     branches:
