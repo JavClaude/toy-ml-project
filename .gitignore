@@ -4,3 +4,4 @@ dist
 .venv
 .coverage
 paa.egg-info
+__pycache__
