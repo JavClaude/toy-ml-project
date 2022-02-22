@@ -1,4 +1,4 @@
-name: paa-unit-tests
+name: paa-unit-tests-and-quality-workflow
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
     branches:
       - main
 jobs:
-  unit-tests:
+  unit-tests-and-quality:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
