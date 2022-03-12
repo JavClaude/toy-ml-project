@@ -1,13 +1,13 @@
 from unittest.mock import patch, MagicMock
 
-from fastapi.testclient import TestClient
 import numpy as np
+from fastapi.testclient import TestClient
 
-from paa.deployment.data_model.data_model import IrisPrediction
-from paa.deployment.application.model_deployment import create_app
+from paa.infra.application.data_model.data_model import IrisPrediction
+from paa.infra.application.app import create_app
 
 
-@patch("paa.deployment.application.model_deployment.load_trained_iris_classifier")
+@patch("paa.infra.application.app.load_trained_iris_classifier")
 def test_application_get_model_parameters_should_return_correct_parameters(
         mock_load_trained_iris_classifier
 ):
@@ -27,8 +27,8 @@ def test_application_get_model_parameters_should_return_correct_parameters(
     assert response.json() == {"n_estimators": 100}
 
 
-@patch("paa.deployment.application.model_deployment.convert_iris_data_structure_to_numpy_array")
-@patch("paa.deployment.application.model_deployment.load_trained_iris_classifier")
+@patch("paa.infra.application.app.convert_iris_data_structure_to_numpy_array")
+@patch("paa.infra.application.app.load_trained_iris_classifier")
 def test_application_predict_should_return_correct_parameters(
         mock_load_trained_iris_classifier,
         mock_convert_iris_data_structure_to_numpy_array
