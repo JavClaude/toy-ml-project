@@ -1,11 +1,9 @@
-import logging
 import pickle
 
 from numpy import ndarray
 from sklearn.ensemble import RandomForestClassifier
 
-logger = logging.getLogger("paa")
-logger.setLevel(logging.INFO)
+from paa.domain.modeling import WRITE_BYTES, TRAINING_MESSAGE
 
 
 class IrisClassifier:
@@ -22,13 +20,9 @@ class IrisClassifier:
         raise NotImplementedError()
 
     def train_classifier(self, X: ndarray, y: ndarray) -> None:
-        print(
-            "Train an Iris classifier with this parameter:\n{}".format(
-                self._model.get_params()
-            )
-        )
+        print(TRAINING_MESSAGE.format(self._model.get_params()))
         self._model.fit(X, y)
 
     def save_classifier(self, filepath: str = None) -> None:
-        with open(filepath, "wb") as output_file:
+        with open(filepath, WRITE_BYTES) as output_file:
             pickle.dump(self, output_file)

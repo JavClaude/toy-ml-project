@@ -3,7 +3,7 @@ import logging
 
 from paa.domain.data.dataset import IrisDataset
 from paa.domain.metrics.metrics import MetricsScorer
-from paa.domain.modelling.classifier import IrisClassifier
+from paa.domain.modeling.classifier import IrisClassifier
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.NOTSET)

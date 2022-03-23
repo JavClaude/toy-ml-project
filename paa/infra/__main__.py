@@ -2,7 +2,7 @@ import argparse
 
 import uvicorn
 
-from paa.deployment.application.model_deployment import create_app
+from paa.infra.application.app import create_app
 
 
 def deploy_model() -> None:

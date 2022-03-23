@@ -2,10 +2,10 @@ from unittest.mock import patch, mock_open
 
 import pytest
 
-from paa.domain.modelling.classifier import IrisClassifier
+from paa.domain.modeling.classifier import IrisClassifier
 
 
-@patch("paa.domain.modelling.classifier.RandomForestClassifier.predict")
+@patch("paa.domain.modeling.classifier.RandomForestClassifier.predict")
 def test_iris_classifier_predict_method_should_call_predict_method_from_underlying_classifier(mock_predict):
     # Given
     iris_classifier = IrisClassifier()
@@ -17,7 +17,7 @@ def test_iris_classifier_predict_method_should_call_predict_method_from_underlyi
     mock_predict.assert_called_with("a")
 
 
-@patch("paa.domain.modelling.classifier.RandomForestClassifier.predict_proba")
+@patch("paa.domain.modeling.classifier.RandomForestClassifier.predict_proba")
 def test_iris_classifier_predict_proba_method_should_call_predict_proba_method_from_underlying_classifier(
         mock_predict_proba
 ):
@@ -31,8 +31,8 @@ def test_iris_classifier_predict_proba_method_should_call_predict_proba_method_f
     mock_predict_proba.assert_called_with("a")
 
 
-@patch("paa.domain.modelling.classifier.RandomForestClassifier.fit")
-@patch("paa.domain.modelling.classifier.RandomForestClassifier.get_params")
+@patch("paa.domain.modeling.classifier.RandomForestClassifier.fit")
+@patch("paa.domain.modeling.classifier.RandomForestClassifier.get_params")
 def test_iris_classifier_train_method_should_call_get_params_and_fit_method_from_underlying_classifier(
         mock_get_params, mock_fit
 ):
@@ -59,7 +59,7 @@ def test_iris_classifier_train_classifier_on_cv_should_raise_not_implemented_err
     assert exc_info.type == NotImplementedError
 
 
-@patch("paa.domain.modelling.classifier.pickle.dump", return_value="a")
+@patch("paa.domain.modeling.classifier.pickle.dump", return_value="a")
 def test_iris_classifier_save_classifier_method_should_call_dump_with_correct_parameter(mock_dump):
     # Given
     iris_classifier = IrisClassifier()

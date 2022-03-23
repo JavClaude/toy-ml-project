@@ -1,13 +1,12 @@
-from typing import Any, Dict
+from typing import Dict
 
 from fastapi import FastAPI
 
-from paa.deployment.data_model.data_model import IrisPrediction
-from paa.domain.data.data_model import Iris
+from paa.infra.application.data_model.data_model import IrisPrediction, Iris
 from paa.domain.utils.utils import (
     convert_iris_data_structure_to_numpy_array,
-    load_trained_iris_classifier,
 )
+from paa.infra.application.utils.utils import load_trained_iris_classifier
 
 
 def create_app(path_to_model: str) -> FastAPI:
@@ -19,7 +18,7 @@ def create_app(path_to_model: str) -> FastAPI:
         return {**iris_classifier._model.get_params()}
 
     @app.post("/v1/predict/", response_model=IrisPrediction)
-    def get_model_prediction(iris: Iris) -> Dict[str, Any]:
+    def get_model_prediction(iris: Iris) -> IrisPrediction:
         prediction = iris_classifier.predict(
             convert_iris_data_structure_to_numpy_array(iris)
         )[0]
